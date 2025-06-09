@@ -1,16 +1,17 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { notFound } from 'next/navigation';
 import { decodeBase64 } from '@/lib/utils';
 import '../../public/styles/enterotp.css'; 
+
 interface UserInfo {
   username: string;
   mobiletype: string;
 }
 
-export default function EnterOTPPage() {
+function EnterOTPContent() {
   const searchParams = useSearchParams();
   const [userInfo, setUserInfo] = useState<UserInfo>({ username: '', mobiletype: '' });
   const [code, setCode] = useState('');
@@ -199,5 +200,24 @@ export default function EnterOTPPage() {
       </div>
       
     </>
+  );
+}
+
+export default function EnterOTPPage() {
+  return (
+    <Suspense fallback={
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        fontSize: '18px',
+        color: '#666'
+      }}>
+        Loading...
+      </div>
+    }>
+      <EnterOTPContent />
+    </Suspense>
   );
 }
