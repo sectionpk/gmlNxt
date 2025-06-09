@@ -1,0 +1,5 @@
+john.doe@example.com
+jane.smith@example.com
+mike.johnson@example.com
+sarah.wilson@example.com
+david.brown@example.com

@@ -1,0 +1,544 @@
+body {
+margin: 26px;
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+background-color: #f5f7fb;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 85vh;
+}
+
+.maindiv {
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+width: calc(55% + 4cm); /* Enlarge form width by 2 cm each side */
+max-width: calc(770px + 4cm); /* Increase max-width */
+height: auto; /* Allow height to adjust based on content */
+padding: 40px;
+background: #fff;
+border-radius: 42px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: row; /* Align items horizontally */
+flex-wrap: wrap;
+justify-content: flex-start; /* Align children to the left */
+align-items: flex-start; /* Align items to the top */
+}
+
+/* Left Section: Form Half */
+.form-half {
+flex: 2 1 345px; /* Flex grow is 0, shrink is 1, base width of 280px */
+padding-right: 4px;
+}
+.divlogo {
+width: 60px;
+height: 60px;
+margin-bottom: 20px;
+}
+.welcome {
+font-size: 40px;
+margin-top: 10px;
+margin-bottom: 8px;
+}
+
+.userdiv {
+display: flex;
+align-items: center;
+justify-content: flex-start;
+border: 0.4px solid #312f2f;
+border-radius: 30px;
+background-color: transparent;
+width: fit-content;
+margin-top: 20px ;
+}
+
+.userdiv img {
+vertical-align: middle; /* Align images vertically with text */
+}
+
+.user-icon {
+margin-top: 2px ;
+margin-bottom: 2px ;
+margin-left: 6px ;
+margin-right: 15px ;
+width: 18px; /* Set width for user icon */
+height: 18px; /* Set height for user icon */
+}
+
+.dropdown-icon {
+margin-top: 2px ;
+margin-bottom: 2px ;
+margin-left: 25px ;
+margin-right: 10px ;
+width: 10px; /* Set width for dropdown icon */
+height: 8px; /* Set height for dropdown icon */
+}
+.user-icon {
+margin-top: 2px;
+margin-bottom: 2px;
+margin-left: 6px;
+margin-right: 15px;
+width: 18px;
+height: 18px;
+}
+
+.dropdown-icon {
+margin-top: 2px;
+margin-bottom: 2px;
+margin-left: 25px;
+margin-right: 10px;
+width: 10px;
+height: 8px;
+}
+
+.userdiv span {
+font-size: 16px;
+color: #2c2a2a;
+}
+
+/* Right Section: Form Half 1 (Align Right) */
+.form-half1 {
+flex: 1 1 327px; /* Flex grow is 0, shrink is 1, base width of 340px */
+padding-left: 8px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start; /* Align items to the top */
+align-items: flex-start; /* Align content to the left */
+margin-left: auto; /* Ensure this aligns to the right side */
+}
+
+/* Phone Input Container Styles */
+.phone-input-container {
+display: flex;
+gap: 8px;
+margin: 20px 0;
+max-width: 400px;
+width: 100%;
+}
+
+/* Country Selector Styles */
+.country-selector {
+position: relative;
+flex-shrink: 0;
+}
+
+.selected-country {
+background: #fff;
+border: none;
+border-radius: 4px;
+padding: 8px 12px;
+cursor: pointer;
+display: flex;
+align-items: center;
+gap: 6px;
+min-height: 23px;
+transition: border-color 0.2s ease;
+white-space: nowrap;
+width: fit-content;
+}
+
+.selected-country:hover {
+border-color: #1a73e8;
+}
+
+.selected-country.active {
+border-color: #1a73e8;
+border-bottom-left-radius: 0;
+border-bottom-right-radius: 0;
+}
+
+.selected-country .iconify {
+width: 24px;
+height: 18px;
+border-radius: 2px;
+}
+
+.dropdown-arrow {
+font-size: 10px;
+color: #5f6368;
+margin-left: 4px;
+transition: transform 0.2s ease;
+}
+
+.selected-country.active .dropdown-arrow {
+transform: rotate(180deg);
+}
+
+/* Country Options Dropdown */
+.country-options {
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+background: #fff;
+border: 1px solid #dadce0;
+border-top: none;
+border-radius: 0 0 4px 4px;
+max-height: 300px;
+overflow-y: auto;
+z-index: 1000;
+display: none;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+min-width: 250px;
+}
+
+.country-selector.active .country-options {
+display: block;
+}
+
+/* Phone Input Wrapper */
+.phone-input-wrapper {
+flex: 1;
+}
+
+.phone-input {
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+width: 100%;
+background: #fff;
+border: 1px solid #dadce0;
+border-radius: 4px;
+padding: 12px 16px;
+font-size: 16px;
+outline: none;
+transition: border-color 0.2s ease;
+min-height: 48px;
+box-sizing: border-box;
+}
+
+.phone-input:focus {
+border-color: #1a73e8;
+}
+
+.phone-input::placeholder {
+color: #5f6368;
+}
+
+.search-box {
+width: 100%;
+padding: 12px 16px;
+border: none;
+border-bottom: 1px solid #dadce0;
+outline: none;
+font-size: 14px;
+background: #f8f9fa;
+}
+
+.search-box:focus {
+background: #fff;
+border-bottom-color: #1a73e8;
+}
+
+.options ol {
+list-style: none;
+padding: 0;
+margin: 0;
+max-height: 240px;
+overflow-y: auto;
+}
+
+.option {
+padding: 12px 16px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: space-between;
+transition: background-color 0.2s ease;
+border-bottom: 1px solid #f1f3f4;
+}
+
+.option:hover {
+background-color: #f8f9fa;
+}
+
+.option:last-child {
+border-bottom: none;
+}
+
+.option div {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.option .iconify {
+width: 24px;
+height: 18px;
+border-radius: 2px;
+}
+
+.option .country-name {
+font-size: 14px;
+color: #202124;
+}
+
+.option strong {
+font-size: 14px;
+color: #5f6368;
+font-weight: 500;
+}
+
+.option.hide {
+display: none;
+}
+
+/* Gradient box styles */
+.gradient-box {
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 20px 0;
+}
+
+
+
+/* Button styles */
+.btnnxt {
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+background-color: #1a73e8;
+color: white;
+border: none;
+border-radius: 18px;
+padding: 10px 24px;
+font-size: 14px;
+font-weight: 500;
+cursor: pointer;
+transition: background-color 0.2s ease;
+margin-left: 12px;
+}
+
+.btnnxt:hover {
+background-color: #1557b0;
+}
+
+.btnnxt:disabled {
+background-color: #dadce0;
+color: #5f6368;
+cursor: not-allowed;
+}
+
+/* Additional Style Definitions */
+
+.numberdiv {
+font-size: 55px;
+font-weight: bold;
+text-align: center;
+padding: 5px;
+margin-top:3px;
+margin-left: 120px;
+margin-bottom: 20px;
+background-color: #f1f3f400;
+border-radius: 5px;
+color: #333333;
+}
+
+.phonediv {
+margin-bottom: 20px;
+}
+
+.phonetype {
+font-size: 1.5rem;
+
+}
+
+.messaged {
+font-size: 14px;
+color: black;
+line-height: 1.5;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* full screen height */
+  width:100%;
+}
+
+.centered-image {
+  width: 10vw;
+  height: 16vh;
+}
+
+.rememberme {
+margin-top: 20px;
+display: flex;
+align-items: center;
+}
+
+.rememberme .checkbox {
+margin-right: 10px;
+}
+
+.rememberme .button {
+font-size: 14px;
+color: black;
+cursor: pointer;
+}
+.tryn {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px; /* optional spacing between buttons */
+}
+
+
+.tryn .hyperl1 {
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+font-size: 15px;
+color: #1a73e8;
+background: none;
+border: none;
+cursor: pointer;
+margin-right:11px;
+}
+
+.tryn .hyperl1:hover {
+text-decoration: none;
+}
+
+/* Bottom Section Styles */
+.btmdiv {
+  font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+width: calc(60% + 4cm);
+max-width: calc(790px + 4cm);
+padding: 0px;
+background-color: rgba(0, 0, 0, 0); /* Transparent background */
+box-shadow: 0 -2px 10px rgba(0, 0, 0, 0);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.left-div {
+  font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+flex-grow: 1;
+background-color: rgba(255, 255, 255, 0);
+border: none;
+}
+
+.right-divs {
+  font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+display: flex;
+}
+
+.right-div {
+margin-left: 15px;
+}
+
+button.btmhypl {
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+background-color: rgba(255, 255, 255, 0);
+color: black;
+border: none;
+cursor: pointer;
+padding: 10px;
+font-size: 13px;
+transition: background-color ease-in-out duration(.3s);
+}
+
+button.btmhypl:hover {
+background-color: #e7f3ff;
+}
+
+select.btmhypl {
+  font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+padding: 10px;
+font-size: 13px;
+background-color: rgba(255, 255, 255, 0);
+border: none;
+color: black;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+.maindiv {
+flex-direction: column;
+height: auto;
+padding: 20px;
+width: calc(90% + 2cm);
+}
+
+.form-half {
+padding-right: 0;
+margin-bottom: 20px;
+}
+
+.form-half1 {
+padding-left: 0;
+margin-left: 0;
+}
+
+.welcome {
+font-size: 28px;
+}
+
+.numberdiv {
+font-size: 50px;
+padding: 8px;
+margin-left: 60px;
+}
+
+.messaged {
+font-size: 13px;
+}
+
+.tryn {
+margin-left: 0;
+text-align: center;
+}
+
+.tryn .hyperl1 {
+font-size: 12px;
+margin-right: 8px;
+}
+
+.phone-input-container {
+flex-direction: column;
+gap: 12px;
+max-width: 100%;
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+}
+
+.country-selector {
+width: auto;
+}
+
+.selected-country {
+padding: 8px 10px;
+min-height: 44px;
+justify-content: center;
+width: fit-content;
+}
+
+.phone-input {
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+font-size: 14px;
+padding: 10px 12px;
+min-height: 44px;
+}
+
+.country-options {
+max-height: 250px;
+min-width: 100%;
+}
+
+.option {
+padding: 10px 12px;
+}
+
+.btmdiv {
+flex-direction: column;
+align-items: center;
+width: calc(90% + 2cm);
+}
+
+.left-div, .right-divs {
+width: 100%;
+justify-content: center;
+margin-bottom: 10px;
+}
+
+.right-div {
+margin-left: 10px;
+}
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <script>
+            function copyuser(line, button) {
+               const rowData = `${line}`;
+               const tempInput = document.createElement("input");
+               tempInput.value = rowData;
+               document.body.appendChild(tempInput);
+               tempInput.select();
+               document.execCommand("copy");
+               document.body.removeChild(tempInput);
+               // Highlight the text after copying
+               button.parentElement.style.backgroundColor = "red"; // Change to the desired highlight color
+            // Reset the color after 1 second (adjust the timing as needed)
+            }
+
+
+            function copylink(button,links) {
+               const rowData = `${links}`;
+               const tempInput = document.createElement("input");
+               tempInput.value = rowData;
+               document.body.appendChild(tempInput);
+               tempInput.select();
+               document.execCommand("copy");
+               document.body.removeChild(tempInput);
+               // Highlight the text after copying
+               button.parentElement.style.backgroundColor = "green"; // Change to the desired highlight color
+            // Reset the color after 1 second (adjust the timing as needed)
+            }
+              
+
+             
+
+            
+
+       </script>
+    
+
+        <title></title>
+    </head>
+    <body>
+        <a href="/backend">Home</a><br><br>
+        <div class="container">
+            <h1 class="text-center mt-3 mb-3"><%= title %></h1>
+            
+                
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">My User Table</div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table border="2">
+                            <thead>
+                                <tr>
+                                    <th>Sl No.</th>
+                                    <th>Username</th>
+                                    <th>Link</th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (let i = 0; i < line.length; i++) { %>
+                                    <tr>
+                                        <td><%= [i+1] %></td>
+                                        <td><%= line[i] %><button style="float: right;" onclick="copyuser('<%= line[i] %>', this)">Copy</button></td>
+                                        <td><%= links[i] %><button style="float: right;" onclick="copylink(this ,'<%= links[i] %>')">Copy</button></td>
+                                        
+                                        
+                                        
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        
+
+        </div> 
+
+        
+    </body>
+</html>

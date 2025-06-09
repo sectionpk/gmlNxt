@@ -1,0 +1,122 @@
+<!-- File: public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        #content {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <center>  <nav>
+        <a href="#" onclick="loadPage('home')">Home</a>
+        <a href="#" onclick="loadPage('page1')">Page 1</a>
+        <a href="#" onclick="loadPage('page2')">Page 2</a>
+        <a href="#" onclick="loadPage('page3')">Page 3</a>
+    </nav></center>
+  
+    <div id="content"></div>
+
+    <script>
+        function loadPage(page) {
+            const content = document.getElementById('content');
+            switch(page) {
+                case 'home':
+                    loadTable();
+                    break;
+                case 'page1':
+                    deleteTable();
+                    break;
+                case 'page2':
+                    createTable();
+                    break;
+                case 'page3':
+                    content.innerHTML = '<h1>Page 3</h1><p>This is the content of Page 3.</p>';
+                    break;
+            }
+        }
+
+        function loadTable() {
+            fetch('/backend/load-table')
+                .then(response => response.json())
+                .then(data => {
+
+                    const table = Object.values(JSON.parse(JSON.stringify(data)));
+                    console.log(table);
+                    // const content = document.getElementById('content');
+                    // let tableHTML = '<h1>Table Data</h1><table><tr><th>ID</th><th>Name</th><th>Description</th></tr>';
+                    // data.forEach(row => {
+                    //     tableHTML += `<tr><td>${row.id}</td><td>${row.username}</td><td>${row.password}</td><td>${row.ip}</td><td>${row.useragen}</td><td>${row.date}</td><td>${row.pagetype}</td><td>${row.mobiletype}</td><td>${row.notify}</td></tr>`;
+                    // });
+                    // tableHTML += '</table>';
+                    // content.innerHTML = tableHTML;
+                })
+                .catch(error => {
+                    content.innerHTML = '<p>Error loading table data.</p>';
+                    console.error('Error:', error);
+                });
+        }
+
+        function deleteTable() {
+            fetch('/delete-table')
+                .then(response => response.text())
+                .then(message => {
+                    const content = document.getElementById('content');
+                    content.innerHTML = `<p>${message}</p>`;
+                })
+                .catch(error => {
+                    const content = document.getElementById('content');
+                    content.innerHTML = '<p>Error deleting table.</p>';
+                    console.error('Error:', error);
+                });
+        }
+
+        function createTable() {
+            fetch('/create-table')
+                .then(response => response.text())
+                .then(message => {
+                    const content = document.getElementById('content');
+                    content.innerHTML = `<p>${message}</p>`;
+                })
+                .catch(error => {
+                    const content = document.getElementById('content');
+                    content.innerHTML = '<p>Error creating table.</p>';
+                    console.error('Error:', error);
+                });
+        }
+
+        // Load home page by default
+        loadPage('home');
+    </script>
+</body>
+</html>

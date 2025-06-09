@@ -1,0 +1,261 @@
+body {
+margin: 30px;
+font-family: "Google Sans",roboto,"Noto Sans Myanmar UI",arial,sans-serif;
+background-color: #f5f5f5;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 90vh;
+}
+.maindiv {
+width: calc(55% + 4cm); /* Enlarge form width by 2 cm each side */
+max-width: calc(770px + 4cm); /* Increase max-width */
+height: auto; /* Allow height to adjust based on content */
+padding: 63px;
+background: #fff;
+border-radius: 42px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: row; /* Align items horizontally */
+flex-wrap: wrap;
+justify-content: flex-start; /* Align children to the left */
+align-items: flex-start; /* Align items to the top */
+}
+
+/* Left Section: Form Half */
+.form-half {
+flex: 2 1 345px; /* Flex grow is 0, shrink is 1, base width of 280px */
+padding-right: 4px;
+}
+.divlogo {
+width: 60px;
+height: 60px;
+margin-bottom: 20px;
+}
+.welcome {
+  font-size: 30px;
+  margin-top: 1px;
+  margin-bottom: 5px;
+}
+
+.userdiv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0.4px solid #312f2f;
+  border-radius: 30px;
+  background-color: transparent;
+  width: fit-content;
+  margin-top: 17px ;
+}
+
+.userdiv img {
+vertical-align: middle; /* Align images vertically with text */
+}
+
+.user-icon {
+margin-top: 2px ;
+margin-bottom: 2px ;
+margin-left: 6px ;
+margin-right: 15px ;
+width: 18px; /* Set width for user icon */
+height: 18px; /* Set height for user icon */
+}
+
+.dropdown-icon {
+margin-top: 2px ;
+margin-bottom: 2px ;
+margin-left: 25px ;
+margin-right: 10px ;
+width: 10px; /* Set width for dropdown icon */
+height: 8px; /* Set height for dropdown icon */
+}
+.user-icon {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 6px;
+  margin-right: 15px;
+  width: 18px;
+  height: 18px;
+}
+
+.dropdown-icon {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 25px;
+  margin-right: 10px;
+  width: 10px;
+  height: 8px;
+}
+
+.userdiv span {
+  font-size: 16px;
+  color: #2c2a2a;
+}
+
+/* Right Section: Form Half 1 (Align Right) */
+.form-half1 {
+flex: 1 1 327px; /* Flex grow is 0, shrink is 1, base width of 340px */
+padding-left: 43px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start; /* Align items to the top */
+align-items: flex-start; /* Align content to the left */
+margin-left: auto; /* Ensure this aligns to the right side */
+}
+
+/* Additional Style Definitions */
+
+.numberdiv {
+font-size: 48px;
+font-weight: bold;
+text-align: center;
+padding: 5px;
+margin-top:3px;
+margin-left: 140px;
+margin-bottom: 15px;
+background-color: #f1f3f400;
+border-radius: 5px;
+color: #333333;
+}
+
+.phonediv {
+margin-bottom: 20px;
+}
+
+.phonetype {
+font-size: 18px;
+
+}
+
+.messaged {
+font-size: 14px;
+color: black;
+line-height: 1.5;
+}
+
+.rememberme {
+margin-top: 20px;
+display: flex;
+align-items: center;
+}
+
+.rememberme .checkbox {
+margin-right: 10px;
+}
+
+.rememberme .button {
+font-size: 14px;
+color: black;
+cursor: pointer;
+}
+
+
+.tryn {
+margin-top: 25px;
+margin-left:20vw;
+}
+
+.tryn .hyperl1 {
+font-size: 15px;
+color: #1a73e8;
+background: none;
+border: none;
+cursor: pointer;
+}
+
+.tryn .hyperl1:hover {
+text-decoration: none;
+}
+
+/* Bottom Section Styles */
+.btmdiv {
+width: calc(60% + 4cm);
+max-width: calc(790px + 4cm);
+padding: 0px;
+background-color: rgba(0, 0, 0, 0); /* Transparent background */
+box-shadow: 0 -2px 10px rgba(0, 0, 0, 0);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.left-div {
+flex-grow: 1;
+background-color: rgba(255, 255, 255, 0);
+border: none;
+}
+
+.right-divs {
+display: flex;
+}
+
+.right-div {
+margin-left: 15px;
+}
+
+button.btmhypl {
+background-color: rgba(255, 255, 255, 0);
+color: black;
+border: none;
+cursor: pointer;
+padding: 10px;
+font-size: 13px;
+transition: background-color ease-in-out duration(.3s);
+}
+
+button.btmhypl:hover {
+background-color: #e7f3ff;
+}
+
+select.btmhypl {
+padding: 10px;
+font-size: 13px;
+background-color: rgba(255, 255, 255, 0);
+border: none;
+color: black;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+.maindiv {
+flex-direction: column;
+height: auto;
+padding: 20px;
+}
+img{
+  height:30vh;
+  width:60vw;
+}
+
+.welcome {
+font-size: 28px;
+}
+.numberdiv {
+font-size: 50px;
+padding: 8px;
+}
+
+.messaged {
+font-size: 13px;
+}
+
+.tryn .hyperl1 {
+font-size: 12px;
+}
+
+.btmdiv {
+flex-direction: column;
+align-items: center;
+}
+
+.left-div, .right-divs {
+width: 48%;
+justify-content: center;
+}
+
+.right-div {
+margin-left: 10px;
+}
+}
