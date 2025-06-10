@@ -4,9 +4,9 @@
   "description": "Next.js migration of Gmail OTP application",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4000",
-    "build": "next build",
-    "start": "next start -p 4000",
+    "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
