@@ -1,32 +1,31 @@
-# Install dependencies only when needed
+# Base image for installing dependencies
 FROM node:18-alpine AS deps
-WORKDIR /app4848
+WORKDIR /app7878
 
-# Install dependencies based on the preferred package manager
-COPY package.json package-lock.json* ./
+# Install only if package files change
+COPY package.json package-lock.json ./
 RUN npm ci
 
-# Rebuild the source code only when needed
+# Build the app
 FROM node:18-alpine AS builder
-WORKDIR /app4848
+WORKDIR /app7878
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Next.js build
 RUN npm run build
 
-# Production image, copy all necessary files and run the server
+# Final image for production runtime
 FROM node:18-alpine AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
+ENV PORT=3000
 
-# Install only production dependencies
+# Only production deps
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/package.json ./package.json
 
-EXPOSE 4000
+EXPOSE 3000
 
 CMD ["npm", "start"]
